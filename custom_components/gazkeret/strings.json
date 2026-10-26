@@ -1,0 +1,181 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Gázmérő és árak",
+        "description": "Az MVM 2024. aug. 1-től érvényes rögzített jelleggörbéje (63 645 MJ/év) alapján számolok.",
+        "data": {
+          "meter_entity": "Gázóra jeladó (reed) szenzor",
+          "meter_factor": "Szorzó (m³ / egység) – ha a szenzor impulzust ad, pl. 0,01",
+          "heating_value": "Fűtőérték (a gázszámláról)",
+          "price_low": "Rezsicsökkentett ár (kereten belül)",
+          "price_high": "Kereten felüli ár",
+          "monthly_fee": "Havi fix díj (alapdíj, ha van)",
+          "extra_mj": "Többletkedvezmény (pl. nagycsalád) MJ/év",
+          "year_offset": "Aug. 1. óta már elfogyasztott gáz (követés előtt)"
+        },
+        "data_description": {
+          "meter_entity": "Összesítő m³ szenzor (total_increasing). Az ESP újraindulását is kezeli.",
+          "heating_value": "MVM 34,8 MJ/m³-rel számol tájékoztatásul; a számládon szereplő érték pontosabb.",
+          "year_offset": "A kedvezményes év aug. 1-jén indul. Ha tudod (pl. aug. 1-i és mai óraállás különbsége), add meg."
+        }
+      },
+      "boiler": {
+        "title": "Kazán",
+        "description": "OpenTherm gateway entitásai. Minden mező opcionális.",
+        "data": {
+          "boiler_active_entity": "Kazán fűt (Heating) bináris szenzor",
+          "flame_entity": "Láng (Flame) bináris szenzor",
+          "fault_entity": "Kazán hiba (Fault) bináris szenzor",
+          "fault_code_entity": "Hibakód szenzor",
+          "block_entity": "Tiltáshoz használt entitás (lehetőleg a CH enable kapcsoló)",
+          "block_action": "Tiltáskor a kapcsolót…",
+          "block_value": "Number entitásnál a tiltási érték",
+          "away_entity": "Távoli módhoz: beltéri célhőmérséklet (Indoor temp) vagy climate",
+          "away_value": "Távoli mód célhőmérséklet"
+        },
+        "data_description": {
+          "block_entity": "Kombi kazán: a CH (fűtés) engedélyt tiltsd, ne az egész kazánt, így marad meleg víz!"
+        }
+      },
+      "otgw": {
+        "title": "Gateway felügyelet és értesítés",
+        "description": "",
+        "data": {
+          "otgw_status_entity": "OpenTherm státusz entitás",
+          "otgw_host": "Gateway IP címe",
+          "otgw_port": "Port (ESPHome API: 6053)",
+          "otgw_restart_button": "Gateway újraindító gomb (Restart)",
+          "otgw_power_switch": "Okos konnektor a gateway áramtalanításához (opcionális)",
+          "otgw_fail_minutes": "Ennyi perc hiba után riasszon",
+          "notify_services": "Értesítési szolgáltatások (pl. notify.mobile_app_telefon)"
+        },
+        "data_description": {
+          "otgw_host": "Ha megadod, rendszeresen ellenőrzöm, hogy elérhető-e a hálózaton."
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Ez a gázmérő már be van állítva."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Gázmérő és árak",
+        "description": "",
+        "data": {
+          "meter_entity": "Gázóra jeladó (reed) szenzor",
+          "meter_factor": "Szorzó (m³ / egység) – ha a szenzor impulzust ad, pl. 0,01",
+          "heating_value": "Fűtőérték (a gázszámláról)",
+          "price_low": "Rezsicsökkentett ár (kereten belül)",
+          "price_high": "Kereten felüli ár",
+          "monthly_fee": "Havi fix díj (alapdíj, ha van)",
+          "extra_mj": "Többletkedvezmény (pl. nagycsalád) MJ/év",
+          "year_offset": "Aug. 1. óta már elfogyasztott gáz (követés előtt)"
+        },
+        "data_description": {
+          "meter_entity": "Összesítő m³ szenzor (total_increasing). Az ESP újraindulását is kezeli.",
+          "heating_value": "MVM 34,8 MJ/m³-rel számol tájékoztatásul; a számládon szereplő érték pontosabb.",
+          "year_offset": "A kedvezményes év aug. 1-jén indul. Ha tudod (pl. aug. 1-i és mai óraállás különbsége), add meg."
+        }
+      },
+      "boiler": {
+        "title": "Kazán",
+        "description": "",
+        "data": {
+          "boiler_active_entity": "Kazán fűt (Heating) bináris szenzor",
+          "flame_entity": "Láng (Flame) bináris szenzor",
+          "fault_entity": "Kazán hiba (Fault) bináris szenzor",
+          "fault_code_entity": "Hibakód szenzor",
+          "block_entity": "Tiltáshoz használt entitás (lehetőleg a CH enable kapcsoló)",
+          "block_action": "Tiltáskor a kapcsolót…",
+          "block_value": "Number entitásnál a tiltási érték",
+          "away_entity": "Távoli módhoz: beltéri célhőmérséklet (Indoor temp) vagy climate",
+          "away_value": "Távoli mód célhőmérséklet"
+        },
+        "data_description": {
+          "block_entity": "Kombi kazán: a CH (fűtés) engedélyt tiltsd, ne az egész kazánt, így marad meleg víz!"
+        }
+      },
+      "otgw": {
+        "title": "Gateway felügyelet és értesítés",
+        "description": "",
+        "data": {
+          "otgw_status_entity": "OpenTherm státusz entitás",
+          "otgw_host": "Gateway IP címe",
+          "otgw_port": "Port (ESPHome API: 6053)",
+          "otgw_restart_button": "Gateway újraindító gomb (Restart)",
+          "otgw_power_switch": "Okos konnektor a gateway áramtalanításához (opcionális)",
+          "otgw_fail_minutes": "Ennyi perc hiba után riasszon",
+          "notify_services": "Értesítési szolgáltatások (pl. notify.mobile_app_telefon)"
+        },
+        "data_description": {
+          "otgw_host": "Ha megadod, rendszeresen ellenőrzöm, hogy elérhető-e a hálózaton."
+        }
+      }
+    }
+  },
+  "selector": {
+    "block_action": {
+      "options": {
+        "turn_off": "kikapcsolom (CH enable)",
+        "turn_on": "bekapcsolom (inhibit)"
+      }
+    }
+  },
+  "services": {
+    "leolvasas": {
+      "name": "Gázóra leolvasás rögzítése",
+      "description": "Havi leolvasott mérőállás – pontosítja a mérést és új elszámolási időszakot indít.",
+      "fields": {
+        "meroallas": {
+          "name": "Mérőállás",
+          "description": "A gázórán leolvasott érték m³-ben."
+        },
+        "datum": {
+          "name": "Dátum",
+          "description": "Alapértelmezés: ma."
+        },
+        "entry_id": {
+          "name": "Gázkeret példány",
+          "description": "Csak több példány esetén kell."
+        }
+      }
+    },
+    "tiltas_feloldasa": {
+      "name": "Kazán tiltás feloldása",
+      "description": "Visszaengedélyezi a kazán fűtését.",
+      "fields": {
+        "entry_id": {
+          "name": "Gázkeret példány",
+          "description": ""
+        }
+      }
+    },
+    "kazan_tiltasa": {
+      "name": "Kazán tiltása",
+      "description": "Kézzel letiltja a kazán fűtését.",
+      "fields": {
+        "entry_id": {
+          "name": "Gázkeret példány",
+          "description": ""
+        }
+      }
+    },
+    "ev_eleji_fogyasztas": {
+      "name": "Év eleji fogyasztás megadása",
+      "description": "Aug. 1. óta a követés előtt elfogyasztott m³.",
+      "fields": {
+        "m3": {
+          "name": "Fogyasztás",
+          "description": "m³"
+        },
+        "entry_id": {
+          "name": "Gázkeret példány",
+          "description": ""
+        }
+      }
+    }
+  }
+}

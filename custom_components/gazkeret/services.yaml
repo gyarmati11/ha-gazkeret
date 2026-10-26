@@ -1,0 +1,48 @@
+leolvasas:
+  fields:
+    meroallas:
+      required: true
+      example: 4521.347
+      selector:
+        number:
+          min: 0
+          max: 999999
+          step: 0.001
+          mode: box
+          unit_of_measurement: "m³"
+    datum:
+      required: false
+      selector:
+        date:
+    entry_id:
+      required: false
+      selector:
+        config_entry:
+          integration: gazkeret
+tiltas_feloldasa:
+  fields:
+    entry_id:
+      selector:
+        config_entry:
+          integration: gazkeret
+kazan_tiltasa:
+  fields:
+    entry_id:
+      selector:
+        config_entry:
+          integration: gazkeret
+ev_eleji_fogyasztas:
+  fields:
+    m3:
+      required: true
+      selector:
+        number:
+          min: 0
+          max: 10000
+          step: 0.1
+          mode: box
+          unit_of_measurement: "m³"
+    entry_id:
+      selector:
+        config_entry:
+          integration: gazkeret

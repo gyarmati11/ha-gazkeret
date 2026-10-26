@@ -1,0 +1,14 @@
+{
+  "domain": "gazkeret",
+  "name": "MVM Gázkeret",
+  "after_dependencies": ["notify", "persistent_notification"],
+  "codeowners": ["@gyarmati11"],
+  "config_flow": true,
+  "dependencies": ["http", "frontend"],
+  "documentation": "https://github.com/gyarmati11/ha-gazkeret",
+  "integration_type": "service",
+  "iot_class": "calculated",
+  "issue_tracker": "https://github.com/gyarmati11/ha-gazkeret/issues",
+  "requirements": [],
+  "version": "1.0.0"
+}
