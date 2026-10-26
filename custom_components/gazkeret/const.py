@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 DOMAIN = "gazkeret"
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 
 CARD_URL = f"/{DOMAIN}/gazkeret-card.js"
 

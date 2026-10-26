@@ -42,8 +42,10 @@ from .const import (
 
 
 def _num(lo, hi, step, unit=None):
-    return sel.NumberSelector(sel.NumberSelectorConfig(
-        min=lo, max=hi, step=step, mode=sel.NumberSelectorMode.BOX, unit_of_measurement=unit))
+    cfg = sel.NumberSelectorConfig(min=lo, max=hi, step=step, mode=sel.NumberSelectorMode.BOX)
+    if unit:
+        cfg["unit_of_measurement"] = unit
+    return sel.NumberSelector(cfg)
 
 
 def _ent(domains):
@@ -59,7 +61,7 @@ def _opt(key, cur):
 def schema_meter(cur: dict) -> vol.Schema:
     return vol.Schema({
         vol.Required(CONF_METER_ENTITY, default=cur.get(CONF_METER_ENTITY, vol.UNDEFINED)): _ent(["sensor", "input_number", "counter"]),
-        vol.Required(CONF_METER_FACTOR, default=cur.get(CONF_METER_FACTOR, DEFAULTS[CONF_METER_FACTOR])): _num(0.0001, 1000, 0.0001),
+        vol.Required(CONF_METER_FACTOR, default=cur.get(CONF_METER_FACTOR, DEFAULTS[CONF_METER_FACTOR])): _num(0.0001, 1000, "any"),
         vol.Required(CONF_HEATING_VALUE, default=cur.get(CONF_HEATING_VALUE, DEFAULTS[CONF_HEATING_VALUE])): _num(25, 45, 0.01, "MJ/m³"),
         vol.Required(CONF_PRICE_LOW, default=cur.get(CONF_PRICE_LOW, DEFAULTS[CONF_PRICE_LOW])): _num(0, 2000, 0.01, "Ft/m³"),
         vol.Required(CONF_PRICE_HIGH, default=cur.get(CONF_PRICE_HIGH, DEFAULTS[CONF_PRICE_HIGH])): _num(0, 5000, 0.01, "Ft/m³"),
